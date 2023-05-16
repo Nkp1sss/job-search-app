@@ -7,12 +7,12 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <Flex className="logo" align="center" gap={{ base: 'sm' }}>
+        <div className="logo">
           <img src={logo} alt="logo" />
           <Text fw={600} size={24} className="logo__text">
             Jobored
           </Text>
-        </Flex>
+        </div>
         <nav className="header__nav nav">
           <NavLink to="/">Поиск Вакансий</NavLink>
           <NavLink to="/favorites">Избранное</NavLink>
