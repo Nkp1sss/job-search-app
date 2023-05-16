@@ -2,9 +2,10 @@ import './App.scss';
 import {
   createBrowserRouter,
   createRoutesFromElements,
-  Route,
   RouterProvider,
+  Route,
 } from 'react-router-dom';
+import { MantineProvider } from '@mantine/core';
 import MainLayout from '../../layouts/MainLayout';
 import Search from '../../pages/Search/Search';
 import Vacancy from '../../pages/Vacancy/Vacancy';
@@ -13,17 +14,23 @@ import Notfound from '../../pages/Notfound/Notfound';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<MainLayout />}>
-      <Route index element={<Search />} />
-      <Route path="vacancy" element={<Vacancy />} />
-      <Route path="favorites" element={<Favorites />} />
+    <>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Search />} />
+        <Route path="vacancy" element={<Vacancy />} />
+        <Route path="favorites" element={<Favorites />} />
+      </Route>
       <Route path="*" element={<Notfound />} />
-    </Route>
+    </>
   )
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <MantineProvider withNormalizeCSS>
+      <RouterProvider router={router} />
+    </MantineProvider>
+  );
 }
 
 export default App;
