@@ -1,0 +1,48 @@
+.filters {
+  padding: 14px 20px;
+  background-color: white;
+  border: 1px solid #EAEBED;
+  border-radius: 12px;
+  max-width: 273px;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &__reset {
+      color: #ACADB9;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .industry {
+    &-title {
+      margin-bottom: 8px;
+    }
+    margin-bottom: 21px;
+  }
+
+  .salary {
+    &-title {
+      margin-bottom: 7px;
+    }
+
+    &-from {
+      margin-bottom: 12px;
+    }
+
+    &-to {
+      margin-bottom: 28px;
+    }
+
+    .btn-apply {
+      width: 100%;
+    }
+  }
+}

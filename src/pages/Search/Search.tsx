@@ -1,7 +1,14 @@
 import './Search.scss';
+import Filters from '../../components/Filters/Filters';
 
 function Search() {
-  return <div>Search</div>;
+  return (
+    <main className="job-search">
+      <div className="container">
+        <Filters />
+      </div>
+    </main>
+  );
 }
 
 export default Search;
