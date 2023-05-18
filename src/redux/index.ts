@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import CataloguesReducer from './slices/catalogues';
+import SuperjobReducer from './slices/SuperjobAPI';
 
 const store = configureStore({
   reducer: {
-    [CataloguesReducer.reducerPath]: CataloguesReducer.reducer,
+    [SuperjobReducer.reducerPath]: SuperjobReducer.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(CataloguesReducer.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(SuperjobReducer.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

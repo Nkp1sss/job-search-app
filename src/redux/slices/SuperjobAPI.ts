@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_BASE_URL } from '../../constants';
 
-const cataloguesSlice = createApi({
-  reducerPath: 'cataloguesSlice',
+const superjobSlice = createApi({
+  reducerPath: 'superjobSlice',
   baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
   endpoints: (builder) => ({
     getCatalogues: builder.query({
@@ -11,5 +11,5 @@ const cataloguesSlice = createApi({
   }),
 });
 
-export const { useGetCataloguesQuery } = cataloguesSlice;
-export default cataloguesSlice;
+export const { useGetCataloguesQuery } = superjobSlice;
+export default superjobSlice;
