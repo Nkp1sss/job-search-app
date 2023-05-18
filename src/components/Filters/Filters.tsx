@@ -18,8 +18,8 @@ function Filters() {
         </div>
       </div>
       <div className="filters-body">
-        <div className="industry">
-          <Text className="industry-title" size={17} fw={700}>
+        <div className="catalogues">
+          <Text className="catalogues-title" size={17} fw={700}>
             Отрасль
           </Text>
           <Select
