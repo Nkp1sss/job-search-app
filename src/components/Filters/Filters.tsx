@@ -5,10 +5,15 @@ import closeBtn from '../../assets/images/close-btn.png';
 import { useGetCataloguesQuery } from '../../redux/slices/SuperjobAPI';
 import { CatalogType, SelectType } from '../../types';
 
-function Filters() {
-  const { data: catalogues, isLoading } = useGetCataloguesQuery('');
+import { useState } from 'react';
 
-  let cataloguesArray: SelectType[] = [{ value: '666', label: 'Loading...' }];
+function Filters() {
+  const [catalogValue, setCatalogValue] = useState<string | null>(null);
+  const [valueFrom, setValueFrom] = useState('');
+  const [valueTo, setValueTo] = useState('');
+
+  const { data: catalogues, isLoading } = useGetCataloguesQuery('');
+  let cataloguesArray: SelectType[] = [];
   if (catalogues) {
     cataloguesArray = catalogues.map((catalog: CatalogType) => ({
       value: String(catalog.key),
@@ -16,13 +21,19 @@ function Filters() {
     }));
   }
 
+  const onResetClick = () => {
+    setCatalogValue(null);
+    setValueFrom('');
+    setValueTo('');
+  };
+
   return (
     <div className="filters">
       <div className="filters-header">
         <Text size={20} fw={700} ff={'inherit'}>
           Фильтры
         </Text>
-        <div className="filters-header__reset">
+        <div className="filters-header__reset" onClick={onResetClick}>
           <Text size={15} fw={400}>
             Сбросить все
           </Text>
@@ -36,6 +47,8 @@ function Filters() {
           </Text>
           <Select
             placeholder="Выберите отрасль"
+            value={catalogValue}
+            onChange={setCatalogValue}
             rightSection={
               isLoading ? (
                 <Loader color="indigo" size="sm" />
@@ -50,8 +63,23 @@ function Filters() {
           <Text className="salary-title" fw={500} size={16}>
             Оклад
           </Text>
-          <Input placeholder="От" className="salary-from" />
-          <Input placeholder="До" className="salary-to" />
+          <Input
+            placeholder="От"
+            className="salary-from"
+            value={valueFrom}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setValueFrom(e.target.value.replace(/\D/g, ''))
+            }
+            pattern="\d"
+          />
+          <Input
+            placeholder="До"
+            className="salary-to"
+            value={valueTo}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setValueTo(e.target.value.replace(/\D/g, ''))
+            }
+          />
           <Button className="button btn-apply" color="indigo" radius="md">
             Применить
           </Button>
