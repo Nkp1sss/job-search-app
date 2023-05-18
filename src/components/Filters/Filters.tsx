@@ -1,9 +1,21 @@
 import './Filters.scss';
-import { Image, Text, Select, Input, Button } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons-react';
+import { Image, Text, Select, Input, Button, Loader } from '@mantine/core';
 import closeBtn from '../../assets/images/close-btn.png';
+import { useGetCataloguesQuery } from '../../redux/slices/SuperjobAPI';
+import { CatalogType, SelectType } from '../../types';
 
 function Filters() {
+  const { data: catalogues, isLoading } = useGetCataloguesQuery('');
+
+  let cataloguesArray: SelectType[] = [{ value: '666', label: 'Loading...' }];
+  if (catalogues) {
+    cataloguesArray = catalogues.map((catalog: CatalogType) => ({
+      value: String(catalog.key),
+      label: catalog.title_trimmed,
+    }));
+  }
+
   return (
     <div className="filters">
       <div className="filters-header">
@@ -24,13 +36,14 @@ function Filters() {
           </Text>
           <Select
             placeholder="Выберите отрасль"
-            rightSection={<IconChevronDown size={14} stroke={1.5} />}
-            data={[
-              { value: 'react', label: 'React' },
-              { value: 'ng', label: 'Angular' },
-              { value: 'svelte', label: 'Svelte' },
-              { value: 'vue', label: 'Vue' },
-            ]}
+            rightSection={
+              isLoading ? (
+                <Loader color="indigo" size="sm" />
+              ) : (
+                <IconChevronDown size={14} stroke={1.5} />
+              )
+            }
+            data={cataloguesArray}
           />
         </div>
         <div className="salary">

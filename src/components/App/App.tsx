@@ -5,6 +5,7 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
+import { useAuthQuery } from '../../redux/slices/SuperjobAPI';
 import { MantineProvider } from '@mantine/core';
 import MainLayout from '../../layouts/MainLayout';
 import Search from '../../pages/Search/Search';
@@ -26,6 +27,8 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  useAuthQuery('');
+
   return (
     <MantineProvider withNormalizeCSS>
       <RouterProvider router={router} />
