@@ -6,6 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { useAuthQuery } from '../../redux/slices/SuperjobAPI';
+import { AuthType } from '../../types';
 import { MantineProvider } from '@mantine/core';
 import MainLayout from '../../layouts/MainLayout';
 import Search from '../../pages/Search/Search';
@@ -27,7 +28,21 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  useAuthQuery('');
+  const getDataFromLocalStorage = (): AuthType => {
+    const authString = localStorage.getItem('auth');
+    return JSON.parse(authString as string);
+  };
+  const setDataToLocalStorage = (data: AuthType): void => {
+    localStorage.setItem('auth', JSON.stringify(data));
+  };
+
+  const { ttl } = getDataFromLocalStorage();
+
+  const { data } = useAuthQuery('', {
+    skip: ttl * 1000 > Date.now(),
+  });
+
+  if (data) setDataToLocalStorage(data);
 
   return (
     <MantineProvider withNormalizeCSS>
