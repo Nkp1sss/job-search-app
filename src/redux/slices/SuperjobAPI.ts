@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_BASE_URL, COUNT_VACANCY_OF_PAGE } from '../../constants';
 
+type GetVacanciesQueryOptionsType = {
+  page?: string;
+};
+
 const superjobSlice = createApi({
   reducerPath: 'superjobSlice',
   baseQuery: fetchBaseQuery({
@@ -20,8 +24,17 @@ const superjobSlice = createApi({
       query: () => `catalogues/`,
     }),
     getVacancies: builder.query({
-      query: (page: string) =>
-        `vacancies/?count=${COUNT_VACANCY_OF_PAGE}${page && `&page=${page}`}`,
+      query: (options: GetVacanciesQueryOptionsType) => {
+        const queryParams = {
+          count: COUNT_VACANCY_OF_PAGE,
+          ...options,
+        };
+        return {
+          url: 'vacancies/',
+          params: queryParams,
+        };
+        // `vacancies/?count=${COUNT_VACANCY_OF_PAGE}${page && `&page=${page}`}`,
+      },
     }),
   }),
 });
