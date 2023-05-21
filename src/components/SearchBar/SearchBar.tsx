@@ -6,10 +6,11 @@ function SearchBar() {
   return (
     <TextInput
       placeholder="Введите название вакансии"
+      className="searchbar"
       icon={<IconSearch />}
       radius={'md'}
       rightSection={
-        <Button radius={'md'} color="indigo" className="test">
+        <Button radius={'md'} color="indigo">
           Поиск
         </Button>
       }

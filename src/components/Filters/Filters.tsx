@@ -42,7 +42,7 @@ function Filters() {
       </div>
       <div className="filters-body">
         <div className="catalogues">
-          <Text className="catalogues-title" size={17} fw={700}>
+          <Text className="catalogues-title" size={17} fw={700} ff={'inherit'}>
             Отрасль
           </Text>
           <Select
@@ -60,7 +60,7 @@ function Filters() {
           />
         </div>
         <div className="salary">
-          <Text className="salary-title" fw={500} size={16}>
+          <Text className="salary-title" fw={500} size={16} ff={'inherit'}>
             Оклад
           </Text>
           <Input

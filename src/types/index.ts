@@ -18,3 +18,24 @@ export type SelectType = {
   label: string;
   value: string;
 };
+
+export type VacanciesType = {
+  objects: VacancyType[];
+  total: number;
+  more: boolean;
+};
+
+export type VacancyType = {
+  id: number;
+  payment_from: number;
+  payment_to: number;
+  profession: string;
+  town: {
+    id: number;
+    title: string;
+  };
+  type_of_work: {
+    id: number;
+    title: string;
+  };
+};

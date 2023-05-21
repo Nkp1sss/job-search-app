@@ -1,6 +1,7 @@
 import './Search.scss';
 import Filters from '../../components/Filters/Filters';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import Vacancies from '../../components/Vacancies/Vacancies';
 
 function Search() {
   return (
@@ -9,6 +10,7 @@ function Search() {
         <Filters />
         <div className="vacancies">
           <SearchBar />
+          <Vacancies />
         </div>
       </div>
     </main>

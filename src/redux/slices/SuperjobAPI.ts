@@ -19,8 +19,11 @@ const superjobSlice = createApi({
     getCatalogues: builder.query({
       query: () => `catalogues/`,
     }),
+    getVacancies: builder.query({
+      query: () => 'vacancies/',
+    }),
   }),
 });
 
-export const { useAuthQuery, useGetCataloguesQuery } = superjobSlice;
+export const { useAuthQuery, useGetCataloguesQuery, useGetVacanciesQuery } = superjobSlice;
 export default superjobSlice;
