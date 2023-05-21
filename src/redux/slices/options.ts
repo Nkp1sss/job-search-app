@@ -8,7 +8,7 @@ const initialState: InitialStateType = {
 };
 
 const slice = createSlice({
-  name: 'pagination',
+  name: 'options',
   initialState,
   reducers: {
     changePage(state, action: PayloadAction<number>) {

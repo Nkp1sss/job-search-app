@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import SuperjobReducer from './slices/SuperjobAPI';
 import VacanciesReducer from './slices/vacancies';
-import PaginationReducer from './slices/pagination';
+import OptionsReducer from './slices/options';
 
 const store = configureStore({
   reducer: {
     vacancies: VacanciesReducer,
-    pagination: PaginationReducer,
+    options: OptionsReducer,
     [SuperjobReducer.reducerPath]: SuperjobReducer.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(SuperjobReducer.middleware),

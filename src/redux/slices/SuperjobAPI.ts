@@ -3,6 +3,7 @@ import { API_BASE_URL, COUNT_VACANCY_OF_PAGE } from '../../constants';
 
 type GetVacanciesQueryOptionsType = {
   page?: string;
+  test?: string;
 };
 
 const superjobSlice = createApi({
@@ -33,7 +34,6 @@ const superjobSlice = createApi({
           url: 'vacancies/',
           params: queryParams,
         };
-        // `vacancies/?count=${COUNT_VACANCY_OF_PAGE}${page && `&page=${page}`}`,
       },
     }),
   }),

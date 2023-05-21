@@ -11,7 +11,7 @@ import { useAppSelector } from '../../hooks';
 // тоже самое делать с отраслью и зп.
 
 function Search() {
-  const currentPage = useAppSelector((store) => store.pagination.page);
+  const currentPage = useAppSelector((store) => store.options.page);
   const {
     data: vacancies,
     isFetching,
