@@ -1,0 +1,33 @@
+.vacancy {
+  background-color: white;
+  border: 1px solid #EAEBED;
+  border-radius: 12px;
+  padding: 18px 18px 24px 24px;
+  margin-bottom: 16px;
+  position: relative;
+
+  &__name {
+    color: #5E96FC;
+  }
+
+  &__description {
+    margin-top: 12px;
+    
+    &_bold {
+      font-weight: 600;
+    }
+  }
+
+  &__location {
+    margin-top: 13px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .star {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+  }
+}
