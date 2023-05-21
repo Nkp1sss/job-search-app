@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { API_BASE_URL } from '../../constants';
+import { API_BASE_URL, COUNT_VACANCY_OF_PAGE } from '../../constants';
 
 const superjobSlice = createApi({
   reducerPath: 'superjobSlice',
@@ -20,7 +20,8 @@ const superjobSlice = createApi({
       query: () => `catalogues/`,
     }),
     getVacancies: builder.query({
-      query: () => 'vacancies/',
+      query: (page: string) =>
+        `vacancies/?count=${COUNT_VACANCY_OF_PAGE}${page && `&page=${page}`}`,
     }),
   }),
 });

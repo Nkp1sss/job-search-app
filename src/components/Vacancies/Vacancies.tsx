@@ -1,12 +1,14 @@
 import './Vacancies.scss';
 import Vacancy from './Vacancy/Vacancy';
 import { Loader } from '@mantine/core';
-import { useGetVacanciesQuery } from '../../redux/slices/SuperjobAPI';
-import { VacancyType } from '../../types';
+import { VacanciesType, VacancyType } from '../../types';
 
-function Vacancies() {
-  const { data: vacancies, isFetching } = useGetVacanciesQuery('');
-  console.log(vacancies);
+type VacanciesPropsType = {
+  isFetching: boolean;
+  vacancies: VacanciesType;
+};
+
+function Vacancies({ isFetching, vacancies }: VacanciesPropsType) {
   return (
     <div className="vacancies-container">
       {isFetching ? (
