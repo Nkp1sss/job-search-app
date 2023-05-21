@@ -12,11 +12,12 @@ import { useAppSelector } from '../../hooks';
 
 function Search() {
   const currentPage = useAppSelector((store) => store.options.page);
+  const searchVacancyName = useAppSelector((store) => store.options.searchVacancyName);
   const {
     data: vacancies,
     isFetching,
     isError,
-  } = useGetVacanciesQuery({ page: `${currentPage - 1}` });
+  } = useGetVacanciesQuery({ page: `${currentPage - 1}`, keyword: searchVacancyName });
 
   return (
     <main className="job-search">

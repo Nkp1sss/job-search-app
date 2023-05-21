@@ -3,7 +3,8 @@ import { API_BASE_URL, COUNT_VACANCY_OF_PAGE } from '../../constants';
 
 type GetVacanciesQueryOptionsType = {
   page?: string;
-  test?: string;
+  keyword?: string;
+  [key: string]: number | string | undefined;
 };
 
 const superjobSlice = createApi({
@@ -26,10 +27,16 @@ const superjobSlice = createApi({
     }),
     getVacancies: builder.query({
       query: (options: GetVacanciesQueryOptionsType) => {
-        const queryParams = {
+        const queryParams: GetVacanciesQueryOptionsType = {
           count: COUNT_VACANCY_OF_PAGE,
-          ...options,
         };
+
+        // выбираем только свойства, которые true
+        for (const prop in options) {
+          if (options[prop]) {
+            queryParams[prop] = options[prop];
+          }
+        }
         return {
           url: 'vacancies/',
           params: queryParams,
