@@ -28,6 +28,10 @@ function Filters() {
     setCatalogValue(null);
     setValueFrom('');
     setValueTo('');
+
+    dispatch(changeCatalogKey(''));
+    dispatch(changePaymentFrom(''));
+    dispatch(changePaymentTo(''));
   };
 
   const onApplyClick = () => {
