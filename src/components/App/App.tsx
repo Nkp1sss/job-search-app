@@ -12,7 +12,7 @@ import MainLayout from '../../layouts/MainLayout';
 import Search from '../../pages/Search/Search';
 import Vacancy from '../../pages/Vacancy/Vacancy';
 import Favorites from '../../pages/Favorites/Favorites';
-import Notfound from '../../pages/Notfound/Notfound';
+import NotFound from '../../pages/NotFound/NotFound';
 
 import { AuthType } from '../../types';
 import { useAuthQuery } from '../../redux/slices/SuperjobAPI';
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
         <Route path="vacancy" element={<Vacancy />} />
         <Route path="favorites" element={<Favorites />} />
       </Route>
-      <Route path="*" element={<Notfound />} />
+      <Route path="*" element={<NotFound />} />
     </>
   )
 );
