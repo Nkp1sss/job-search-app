@@ -1,13 +1,15 @@
 import './SearchBar.scss';
+
+import { useState } from 'react';
 import { TextInput, Button } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
+
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { useState } from 'react';
 import { changeSearchValue } from '../../redux/slices/options';
 
 function SearchBar() {
-  const dispatch = useAppDispatch();
   const searchValue = useAppSelector((store) => store.options.searchVacancyName);
+  const dispatch = useAppDispatch();
 
   const [inputValue, setInputValue] = useState(searchValue);
 

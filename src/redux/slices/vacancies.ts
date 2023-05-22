@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { MAX_VACANCIES } from '../../constants';
 
 type InitialStateType = {

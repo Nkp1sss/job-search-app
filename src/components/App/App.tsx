@@ -1,18 +1,21 @@
 import './App.scss';
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
   Route,
 } from 'react-router-dom';
-import { useAuthQuery } from '../../redux/slices/SuperjobAPI';
-import { AuthType } from '../../types';
 import { MantineProvider } from '@mantine/core';
+
 import MainLayout from '../../layouts/MainLayout';
 import Search from '../../pages/Search/Search';
 import Vacancy from '../../pages/Vacancy/Vacancy';
 import Favorites from '../../pages/Favorites/Favorites';
 import Notfound from '../../pages/Notfound/Notfound';
+
+import { AuthType } from '../../types';
+import { useAuthQuery } from '../../redux/slices/SuperjobAPI';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,7 +44,6 @@ function App() {
   const { data } = useAuthQuery('', {
     skip: ttl * 1000 > Date.now(),
   });
-
   if (data) setDataToLocalStorage(data);
 
   return (

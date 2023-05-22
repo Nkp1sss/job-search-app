@@ -1,12 +1,15 @@
 import './Filters.scss';
+
+import { useState } from 'react';
 import { IconChevronDown } from '@tabler/icons-react';
 import { Image, Text, Select, Input, Button, Loader } from '@mantine/core';
-import closeBtn from '../../assets/images/close-btn.png';
-import { useGetCataloguesQuery } from '../../redux/slices/SuperjobAPI';
-import { CatalogType, SelectType } from '../../types';
-import { changeCatalogKey, changePaymentFrom, changePaymentTo } from '../../redux/slices/options';
+
 import { useAppDispatch } from '../../hooks';
-import { useState } from 'react';
+import { useGetCataloguesQuery } from '../../redux/slices/SuperjobAPI';
+import { changeCatalogKey, changePaymentFrom, changePaymentTo } from '../../redux/slices/options';
+
+import { CatalogType, SelectType } from '../../types';
+import closeBtn from '../../assets/images/close-btn.png';
 
 function Filters() {
   const [catalogValue, setCatalogValue] = useState<string | null>(null);

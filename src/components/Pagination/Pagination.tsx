@@ -1,8 +1,11 @@
 import './Pagination.scss';
+
 import { Pagination as MantinePagination } from '@mantine/core';
-import { COUNT_VACANCY_OF_PAGE } from '../../constants';
+
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { changePage } from '../../redux/slices/options';
+
+import { COUNT_VACANCY_OF_PAGE } from '../../constants';
 
 function Pagination() {
   const dispatch = useAppDispatch();

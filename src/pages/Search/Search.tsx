@@ -1,12 +1,16 @@
 import './Search.scss';
+
 import { useEffect } from 'react';
+
 import Filters from '../../components/Filters/Filters';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Vacancies from '../../components/Vacancies/Vacancies';
 import Pagination from '../../components/Pagination/Pagination';
-import { useGetVacanciesQuery } from '../../redux/slices/SuperjobAPI';
+
 import { useAppSelector, useAppDispatch } from '../../hooks';
+import { useGetVacanciesQuery } from '../../redux/slices/SuperjobAPI';
 import { changeTotal } from '../../redux/slices/vacancies';
+
 import { MAX_VACANCIES } from '../../constants';
 
 function Search() {

@@ -1,6 +1,8 @@
 import './Header.scss';
-import { Image, Text } from '@mantine/core';
+
 import { NavLink } from 'react-router-dom';
+import { Image, Text } from '@mantine/core';
+
 import logo from '../../assets/images/logo.svg';
 
 function Header() {

@@ -1,6 +1,9 @@
 import './Vacancies.scss';
-import Vacancy from './Vacancy/Vacancy';
+
 import { Loader } from '@mantine/core';
+
+import Vacancy from './Vacancy/Vacancy';
+
 import { VacanciesType, VacancyType } from '../../types';
 
 type VacanciesPropsType = {

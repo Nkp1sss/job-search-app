@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import SuperjobReducer from './slices/SuperjobAPI';
 import VacanciesReducer from './slices/vacancies';
 import OptionsReducer from './slices/options';
