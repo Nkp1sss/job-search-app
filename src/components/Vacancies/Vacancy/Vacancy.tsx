@@ -14,7 +14,7 @@ function Vacancy({ profession, payment_from, payment_to, type_of_work, town }: V
       ? `з/п ${payment_from} rub`
       : payment_from === 0 && payment_to !== 0
       ? `з/п до ${payment_to} rub`
-      : 'з/п договорная';
+      : 'з/п по договорённости';
 
   const [isSaved, setIsSaved] = useState(false);
 

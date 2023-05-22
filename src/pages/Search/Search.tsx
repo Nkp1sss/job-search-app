@@ -11,13 +11,24 @@ import { MAX_VACANCIES } from '../../constants';
 
 function Search() {
   const dispatch = useAppDispatch();
+
   const currentPage = useAppSelector((store) => store.options.page);
   const searchVacancyName = useAppSelector((store) => store.options.searchVacancyName);
+  const catalogKey = useAppSelector((store) => store.options.catalogKey);
+  const payment_from = useAppSelector((store) => store.options.payment_from);
+  const payment_to = useAppSelector((store) => store.options.payment_to);
+
   const {
     data: vacancies,
     isFetching,
     isError,
-  } = useGetVacanciesQuery({ page: `${currentPage - 1}`, keyword: searchVacancyName });
+  } = useGetVacanciesQuery({
+    page: `${currentPage - 1}`,
+    keyword: searchVacancyName,
+    catalogues: catalogKey,
+    payment_from,
+    payment_to,
+  });
 
   useEffect(() => {
     if (vacancies) {

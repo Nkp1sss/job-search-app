@@ -4,6 +4,9 @@ import { API_BASE_URL, COUNT_VACANCY_OF_PAGE } from '../../constants';
 type GetVacanciesQueryOptionsType = {
   page?: string;
   keyword?: string;
+  catalogues?: string;
+  payment_from?: string;
+  payment_to?: string;
   [key: string]: number | string | undefined;
 };
 

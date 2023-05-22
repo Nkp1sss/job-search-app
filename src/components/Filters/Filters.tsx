@@ -4,13 +4,16 @@ import { Image, Text, Select, Input, Button, Loader } from '@mantine/core';
 import closeBtn from '../../assets/images/close-btn.png';
 import { useGetCataloguesQuery } from '../../redux/slices/SuperjobAPI';
 import { CatalogType, SelectType } from '../../types';
-
+import { changeCatalogKey, changePaymentFrom, changePaymentTo } from '../../redux/slices/options';
+import { useAppDispatch } from '../../hooks';
 import { useState } from 'react';
 
 function Filters() {
   const [catalogValue, setCatalogValue] = useState<string | null>(null);
   const [valueFrom, setValueFrom] = useState('');
   const [valueTo, setValueTo] = useState('');
+
+  const dispatch = useAppDispatch();
 
   const { data: catalogues, isLoading } = useGetCataloguesQuery('');
   let cataloguesArray: SelectType[] = [];
@@ -25,6 +28,14 @@ function Filters() {
     setCatalogValue(null);
     setValueFrom('');
     setValueTo('');
+  };
+
+  const onApplyClick = () => {
+    if (catalogValue) {
+      dispatch(changeCatalogKey(catalogValue));
+    }
+    dispatch(changePaymentFrom(valueFrom));
+    dispatch(changePaymentTo(valueTo));
   };
 
   return (
@@ -80,7 +91,7 @@ function Filters() {
               setValueTo(e.target.value.replace(/\D/g, ''))
             }
           />
-          <Button className="button btn-apply" color="indigo" radius="md">
+          <Button className="button btn-apply" color="indigo" radius="md" onClick={onApplyClick}>
             Применить
           </Button>
         </div>
