@@ -30,6 +30,7 @@ export type VacancyType = {
   payment_from: number;
   payment_to: number;
   profession: string;
+  vacancyRichText: string;
   town: {
     id: number;
     title: string;

@@ -10,7 +10,7 @@ import { MantineProvider } from '@mantine/core';
 
 import MainLayout from '../../layouts/MainLayout';
 import Search from '../../pages/Search/Search';
-import Vacancy from '../../pages/Vacancy/Vacancy';
+import VacancyDescription from '../../pages/Vacancy/VacancyDescription';
 import Favorites from '../../pages/Favorites/Favorites';
 import NotFound from '../../pages/NotFound/NotFound';
 
@@ -22,7 +22,7 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Search />} />
-        <Route path="vacancy" element={<Vacancy />} />
+        <Route path="vacancy" element={<VacancyDescription />} />
         <Route path="favorites" element={<Favorites />} />
       </Route>
       <Route path="*" element={<NotFound />} />
