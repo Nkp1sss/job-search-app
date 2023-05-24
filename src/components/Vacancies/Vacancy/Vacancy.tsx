@@ -6,7 +6,7 @@ import { Text } from '@mantine/core';
 
 import { VacancyType } from '../../../types';
 
-import { changeDataInLocalStorage } from './utils';
+import { getDataFromLocalStorage, changeDataInLocalStorage } from './utils';
 
 import location from '../../../assets/images/location.svg';
 import unfilledStar from '../../../assets/images/unfilled-star.png';
@@ -14,7 +14,11 @@ import filledStar from '../../../assets/images/filled-star.png';
 
 function Vacancy(vacancyProps: VacancyType) {
   const { profession, payment_from, payment_to, type_of_work, town, id } = vacancyProps;
-  const [isSaved, setIsSaved] = useState(false);
+
+  const savedVacancies = getDataFromLocalStorage();
+  const [isSaved, setIsSaved] = useState(
+    savedVacancies.find((vacancy: VacancyType) => vacancy.id === id) === undefined ? false : true
+  );
 
   const salaryString =
     payment_from !== 0 && payment_to !== 0

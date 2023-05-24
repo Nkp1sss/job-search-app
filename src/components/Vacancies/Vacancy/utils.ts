@@ -23,4 +23,4 @@ const isContainVacancy = (array: VacancyType[], id: number) =>
 const removeVacancyById = (array: VacancyType[], id: number) =>
   array.filter((vacancy) => vacancy.id !== id);
 
-export { changeDataInLocalStorage };
+export { getDataFromLocalStorage, changeDataInLocalStorage };
