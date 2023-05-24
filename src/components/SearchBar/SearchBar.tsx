@@ -14,29 +14,24 @@ function SearchBar() {
   const [inputValue, setInputValue] = useState(searchValue);
 
   return (
-    <TextInput
-      placeholder="Введите название вакансии"
-      className="searchbar"
-      icon={<IconSearch />}
-      radius={'md'}
-      rightSection={
-        <Button
-          radius={'md'}
-          color="indigo"
-          onClick={() => dispatch(changeSearchValue(inputValue))}
-        >
-          Поиск
-        </Button>
-      }
-      rightSectionWidth={80}
-      value={inputValue}
-      onChange={(e) => setInputValue(e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          dispatch(changeSearchValue(inputValue));
-        }
-      }}
-    />
+    <div className="searchbar">
+      <TextInput
+        placeholder="Введите название вакансии"
+        className="searchbar-input"
+        icon={<IconSearch />}
+        radius={'md'}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            dispatch(changeSearchValue(inputValue));
+          }
+        }}
+      />
+      <Button radius={'md'} color="indigo" onClick={() => dispatch(changeSearchValue(inputValue))}>
+        Поиск
+      </Button>
+    </div>
   );
 }
 

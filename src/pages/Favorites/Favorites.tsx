@@ -9,6 +9,14 @@ import { getDataFromLocalStorage } from '../../components/Vacancies/Vacancy/util
 
 import man from '../../assets/images/man.png';
 
+/** TODO:
+ * засунуть в store сохранные вакансии, начальное состояние брать из localStorage,
+ * при добавлении или удалении вакансии из избранного будет меняться стор
+ * и перерисовываться сразу карточки.
+ * То есть если сейчас при клике на удалить карточку из избранного, чтобы она удалилась
+ * нужно перезайти на страницу, то так она будет сразу удаляться
+ */
+
 function Favorites() {
   const vacancies = getDataFromLocalStorage();
   const navigate = useNavigate();
