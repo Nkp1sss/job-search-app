@@ -31,20 +31,20 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  const getDataFromLocalStorage = (): AuthType => {
+  const getAuthFromLocalStorage = (): AuthType => {
     const authString = localStorage.getItem('auth');
     return JSON.parse(authString as string);
   };
-  const setDataToLocalStorage = (data: AuthType): void => {
+  const setAuthToLocalStorage = (data: AuthType): void => {
     localStorage.setItem('auth', JSON.stringify(data));
   };
 
-  const { ttl } = getDataFromLocalStorage();
+  const { ttl } = getAuthFromLocalStorage();
 
   const { data } = useAuthQuery('', {
     skip: ttl * 1000 > Date.now(),
   });
-  if (data) setDataToLocalStorage(data);
+  if (data) setAuthToLocalStorage(data);
 
   return (
     <MantineProvider withNormalizeCSS>

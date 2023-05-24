@@ -1,10 +1,12 @@
 import './Vacancy.scss';
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Text } from '@mantine/core';
 
 import { VacancyType } from '../../../types';
+
+import { changeDataInLocalStorage } from './utils';
 
 import location from '../../../assets/images/location.svg';
 import unfilledStar from '../../../assets/images/unfilled-star.png';
@@ -24,8 +26,11 @@ function Vacancy(vacancyProps: VacancyType) {
       : 'з/п по договорённости';
 
   const navigate = useNavigate();
+  const currentLocation = useLocation();
 
-  const onVacancyClick = () => navigate('/vacancy', { state: vacancyProps });
+  const onVacancyClick = () => {
+    if (currentLocation.pathname !== '/vacancy') navigate('/vacancy', { state: vacancyProps });
+  };
 
   return (
     <div className="vacancy" data-vacancy_id={id} onClick={onVacancyClick}>
@@ -46,6 +51,8 @@ function Vacancy(vacancyProps: VacancyType) {
         alt="unfilled star"
         onClick={(event: React.MouseEvent<HTMLImageElement>) => {
           setIsSaved(!isSaved);
+          changeDataInLocalStorage(vacancyProps);
+
           event.stopPropagation();
         }}
       />
