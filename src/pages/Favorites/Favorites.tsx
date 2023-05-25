@@ -1,25 +1,22 @@
 import './Favorites.scss';
 
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppSelector } from '../../hooks';
 
 import Vacancy from '../../components/Vacancies/Vacancy/Vacancy';
 
 import { VacancyType } from '../../types';
-import { getDataFromLocalStorage } from '../../components/Vacancies/Vacancy/utils';
 
 import man from '../../assets/images/man.png';
 
-/** TODO:
- * засунуть в store сохранные вакансии, начальное состояние брать из localStorage,
- * при добавлении или удалении вакансии из избранного будет меняться стор
- * и перерисовываться сразу карточки.
- * То есть если сейчас при клике на удалить карточку из избранного, чтобы она удалилась
- * нужно перезайти на страницу, то так она будет сразу удаляться
- */
-
 function Favorites() {
-  const vacancies = getDataFromLocalStorage();
+  const vacancies = useAppSelector((store) => store.savedVacancies.vacancies);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('savedVacancies', JSON.stringify(vacancies) || '[]');
+  }, [vacancies]);
 
   return (
     <div className="favorites">
