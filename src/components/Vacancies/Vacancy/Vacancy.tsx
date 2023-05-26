@@ -1,10 +1,15 @@
 import './Vacancy.scss';
 
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { Text } from '@mantine/core';
 
 import { VacancyType } from '../../../types';
+
+import { addVacancy, removeVacancy } from '../../../redux/slices/savedVacancies';
+
+import { isContainVacancy } from './utils';
 
 import location from '../../../assets/images/location.svg';
 import unfilledStar from '../../../assets/images/unfilled-star.png';
@@ -12,7 +17,11 @@ import filledStar from '../../../assets/images/filled-star.png';
 
 function Vacancy(vacancyProps: VacancyType) {
   const { profession, payment_from, payment_to, type_of_work, town, id } = vacancyProps;
-  const [isSaved, setIsSaved] = useState(false);
+
+  const savedVacancies = useAppSelector((store) => store.savedVacancies.vacancies);
+  const [isSaved, setIsSaved] = useState(
+    savedVacancies.find((vacancy: VacancyType) => vacancy.id === id) === undefined ? false : true
+  );
 
   const salaryString =
     payment_from !== 0 && payment_to !== 0
@@ -24,8 +33,23 @@ function Vacancy(vacancyProps: VacancyType) {
       : 'з/п по договорённости';
 
   const navigate = useNavigate();
+  const currentLocation = useLocation();
 
-  const onVacancyClick = () => navigate('/vacancy', { state: vacancyProps });
+  const onVacancyClick = () => {
+    if (currentLocation.pathname !== '/vacancy') navigate('/vacancy', { state: vacancyProps });
+  };
+
+  const dispatch = useAppDispatch();
+
+  const changeDataInLocalStorage = (vacancies: VacancyType[], data: VacancyType): void => {
+    if (vacancies) {
+      if (isContainVacancy(vacancies, data.id)) {
+        dispatch(removeVacancy(data.id));
+      } else {
+        dispatch(addVacancy(data));
+      }
+    }
+  };
 
   return (
     <div className="vacancy" data-vacancy_id={id} onClick={onVacancyClick}>
@@ -46,6 +70,8 @@ function Vacancy(vacancyProps: VacancyType) {
         alt="unfilled star"
         onClick={(event: React.MouseEvent<HTMLImageElement>) => {
           setIsSaved(!isSaved);
+          changeDataInLocalStorage(savedVacancies, vacancyProps);
+
           event.stopPropagation();
         }}
       />

@@ -2,6 +2,9 @@ import './Vacancies.scss';
 
 import { Loader } from '@mantine/core';
 
+import { useEffect } from 'react';
+import { useAppSelector } from '../../hooks';
+
 import Vacancy from './Vacancy/Vacancy';
 
 import { VacanciesType, VacancyType } from '../../types';
@@ -12,6 +15,12 @@ type VacanciesPropsType = {
 };
 
 function Vacancies({ isFetching, vacancies }: VacanciesPropsType) {
+  const savedVacancies = useAppSelector((store) => store.savedVacancies.vacancies);
+
+  useEffect(() => {
+    localStorage.setItem('savedVacancies', JSON.stringify(savedVacancies) || '[]');
+  }, [savedVacancies]);
+
   return (
     <div className="vacancies-container">
       {isFetching ? (
