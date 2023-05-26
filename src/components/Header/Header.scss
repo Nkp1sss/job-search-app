@@ -3,6 +3,10 @@
 .header {
   min-height: 84px;
 
+  @media screen and (max-width: 1000px) {
+    min-height: 60px;
+  }
+
   .container {
     height: 100%;
     display: flex;

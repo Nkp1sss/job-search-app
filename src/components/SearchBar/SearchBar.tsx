@@ -1,6 +1,7 @@
 import './SearchBar.scss';
 
 import { useState } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
 import { TextInput, Button } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 
@@ -13,10 +14,12 @@ function SearchBar() {
 
   const [inputValue, setInputValue] = useState(searchValue);
 
+  const searchbarMediaQuery = useMediaQuery('(max-width: 360px)');
+
   return (
     <div className="searchbar">
       <TextInput
-        placeholder="Введите название вакансии"
+        placeholder={searchbarMediaQuery ? 'Название вакансии' : 'Введите название вакансии'}
         className="searchbar-input"
         icon={<IconSearch />}
         radius={'md'}

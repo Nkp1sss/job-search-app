@@ -6,6 +6,15 @@
   .container {
     display: flex;
     gap: 28px;
+
+    @media screen and (max-width: 1000px) {
+      gap: 15px;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      // align-items: center;
+    }
   }
 
   .vacancies {
@@ -14,7 +23,11 @@
 }
 
 .pagination-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 1000px) {
+    margin-bottom: 5px;
+  }
 }

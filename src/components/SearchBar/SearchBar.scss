@@ -3,6 +3,10 @@
   display: flex;
   gap: 10px;
 
+  @media screen and (max-width: 1000px) {
+    margin-bottom: 16px;
+  }
+
   &-input {
     flex-grow: 1;
   }

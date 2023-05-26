@@ -1,6 +1,7 @@
 import './Search.scss';
 
 import { useEffect } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
 import { Pagination as MantinePagination } from '@mantine/core';
 
 import Filters from '../../components/Filters/Filters';
@@ -42,6 +43,8 @@ function Search() {
     }
   }, [vacancies]);
 
+  const paginationMediaQuery = useMediaQuery('(max-width: 1000px)');
+
   return (
     <main className="job-search">
       <div className="container">
@@ -55,6 +58,7 @@ function Search() {
               total={currentVacanciesTotal / COUNT_VACANCY_OF_PAGE}
               value={currentPage}
               onChange={(newPage) => dispatch(changePage(newPage))}
+              size={paginationMediaQuery ? 'xs' : 'md'}
             />
           )}
         </div>
