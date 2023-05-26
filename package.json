@@ -1,6 +1,7 @@
 {
   "name": "job-search-app",
   "private": true,
+  "homepage": "https://nkp1sss.github.io/job-search-app/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -8,7 +9,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .tsx --ext .ts",
-    "lint-fix": "eslint . --ext .tsx --ext .ts --fix"
+    "lint-fix": "eslint . --ext .tsx --ext .ts --fix",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "@mantine/core": "^6.0.11",
@@ -16,6 +19,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@tabler/icons-react": "^2.19.0",
     "@types/node": "^20.2.1",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
