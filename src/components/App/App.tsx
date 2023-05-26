@@ -12,7 +12,7 @@ import MainLayout from '../../layouts/MainLayout';
 import Search from '../../pages/Search/Search';
 import VacancyDescription from '../../pages/Vacancy/VacancyDescription';
 import Favorites from '../../pages/Favorites/Favorites';
-import NotFound from '../../pages/NotFound/NotFound';
+import NotFound from '../../pages/Notfound/Notfound';
 
 import { AuthType } from '../../types';
 import { useAuthQuery } from '../../redux/slices/SuperjobAPI';
