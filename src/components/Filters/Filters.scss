@@ -1,0 +1,57 @@
+.filters {
+  padding: 14px 20px;
+  background-color: white;
+  border: 1px solid #EAEBED;
+  border-radius: 12px;
+  min-width: 274px;
+  height: 100%;
+
+  @media screen and (max-width: 1000px) {
+    padding: 8px 16px;
+  }
+
+  @media screen and (max-width: 345px) {
+    min-width: 240px;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &__reset {
+      color: #ACADB9;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  .catalogues {
+    &-title {
+      margin-bottom: 8px;
+    }
+    margin-bottom: 21px;
+  }
+
+  .salary {
+    &-title {
+      margin-bottom: 7px;
+    }
+
+    &-from {
+      margin-bottom: 12px;
+    }
+
+    &-to {
+      margin-bottom: 28px;
+    }
+
+    .btn-apply {
+      width: 100%;
+    }
+  }
+}

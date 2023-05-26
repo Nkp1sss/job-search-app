@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+#root {
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1116px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1116px) {
+    margin: auto 20px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &.active {
+    color: #5E96FC;
+  }
+}

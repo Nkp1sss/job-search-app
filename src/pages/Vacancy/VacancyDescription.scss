@@ -1,0 +1,17 @@
+.vacancy-description {
+  background-color: #F5F5F5;
+  padding-top: 40px;
+  flex-grow: 1;
+  padding-bottom: 20px;
+
+  .vacancy {
+    cursor: default;
+  }
+
+  .vacancy-requirements {
+    background-color: white;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+    padding: 18px 18px 24px 24px;
+  }
+}
