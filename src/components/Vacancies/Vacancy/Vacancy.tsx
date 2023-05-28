@@ -1,7 +1,8 @@
 import './Vacancy.scss';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useMediaQuery } from '@mantine/hooks';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { Text } from '@mantine/core';
 
@@ -51,13 +52,16 @@ function Vacancy(vacancyProps: VacancyType) {
     }
   };
 
+  const mediaQuery = useMediaQuery('(max-width: 520px)');
+
   return (
     <div className="vacancy" data-vacancy_id={id} onClick={onVacancyClick}>
       <Text className="vacancy__name" ff={'inherit'} fw={600} size={20}>
         {profession}
       </Text>
       <div className="vacancy__description">
-        <span className="vacancy__description_bold">{salaryString}</span> &nbsp; • &nbsp;
+        <span className="vacancy__description_bold">{salaryString}</span>
+        {!mediaQuery && <>&nbsp; • &nbsp;</>}
         {type_of_work && type_of_work.title}
       </div>
       <div className="vacancy__location">

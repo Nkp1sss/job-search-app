@@ -3,6 +3,10 @@
   padding-top: 40px;
   flex-grow: 1;
 
+  @media screen and (max-width: 768px) {
+    padding-top: 20px;
+  }
+
   .container {
     display: flex;
     gap: 28px;
@@ -26,8 +30,4 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-
-  @media screen and (max-width: 1000px) {
-    margin-bottom: 5px;
-  }
 }
