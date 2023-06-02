@@ -17,25 +17,25 @@ const slice = createSlice({
   name: 'inputs',
   initialState,
   reducers: {
-    changeInputValue(state, action: PayloadAction<string>) {
+    changeVacancyInput(state, action: PayloadAction<string>) {
       state.searchInputValue = action.payload;
     },
-    changeInputCatalogKey(state, action: PayloadAction<string>) {
+    changeCatalogKeyInput(state, action: PayloadAction<string>) {
       state.catalogKey = action.payload;
     },
-    changeInputPaymentFrom(state, action: PayloadAction<string>) {
+    changeSalaryFromInput(state, action: PayloadAction<string>) {
       state.payment_from = action.payload;
     },
-    changeInputPaymentTo(state, action: PayloadAction<string>) {
+    changeSalaryToInput(state, action: PayloadAction<string>) {
       state.payment_to = action.payload;
     },
   },
 });
 
 export const {
-  changeInputValue,
-  changeInputCatalogKey,
-  changeInputPaymentFrom,
-  changeInputPaymentTo,
+  changeVacancyInput,
+  changeCatalogKeyInput,
+  changeSalaryFromInput,
+  changeSalaryToInput,
 } = slice.actions;
 export default slice.reducer;

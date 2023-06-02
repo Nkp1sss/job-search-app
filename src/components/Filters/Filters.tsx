@@ -7,14 +7,14 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useGetCataloguesQuery } from '../../redux/slices/SuperjobAPI';
 import {
   changeCatalogKey,
-  changePaymentFrom,
-  changePaymentTo,
-  changeSearchValue,
+  changeSalaryFrom,
+  changeSalaryTo,
+  changeSearchVacancy,
 } from '../../redux/slices/options';
 import {
-  changeInputCatalogKey,
-  changeInputPaymentTo,
-  changeInputPaymentFrom,
+  changeCatalogKeyInput,
+  changeSalaryToInput,
+  changeSalaryFromInput,
 } from '../../redux/slices/inputs';
 
 import { CatalogType, SelectType } from '../../types';
@@ -37,24 +37,24 @@ function Filters() {
   }
 
   const onResetClick = () => {
-    dispatch(changeInputCatalogKey(''));
-    dispatch(changeInputPaymentFrom(''));
-    dispatch(changeInputPaymentTo(''));
+    dispatch(changeCatalogKeyInput(''));
+    dispatch(changeSalaryFromInput(''));
+    dispatch(changeSalaryToInput(''));
 
     dispatch(changeCatalogKey(''));
-    dispatch(changePaymentFrom(''));
-    dispatch(changePaymentTo(''));
+    dispatch(changeSalaryFrom(''));
+    dispatch(changeSalaryTo(''));
   };
 
   const onApplyClick = () => {
     if (catalogValue) {
       dispatch(changeCatalogKey(catalogValue));
     }
-    dispatch(changePaymentFrom(valueFrom));
-    dispatch(changePaymentTo(valueTo));
+    dispatch(changeSalaryFrom(valueFrom));
+    dispatch(changeSalaryTo(valueTo));
 
     if (searchInputValue) {
-      dispatch(changeSearchValue(searchInputValue));
+      dispatch(changeSearchVacancy(searchInputValue));
     }
   };
 
@@ -79,7 +79,7 @@ function Filters() {
           <Select
             placeholder="Выберите отрасль"
             value={catalogValue}
-            onChange={(value: string) => dispatch(changeInputCatalogKey(value))}
+            onChange={(value: string) => dispatch(changeCatalogKeyInput(value))}
             rightSection={
               isLoading ? (
                 <Loader color="indigo" size="sm" />
@@ -99,7 +99,7 @@ function Filters() {
             className="salary-from"
             value={valueFrom}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              dispatch(changeInputPaymentFrom(e.target.value.replace(/\D/g, '')))
+              dispatch(changeSalaryFromInput(e.target.value.replace(/\D/g, '')))
             }
             pattern="\d"
           />
@@ -108,7 +108,7 @@ function Filters() {
             className="salary-to"
             value={valueTo}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              dispatch(changeInputPaymentTo(e.target.value.replace(/\D/g, '')))
+              dispatch(changeSalaryToInput(e.target.value.replace(/\D/g, '')))
             }
           />
           <Button className="button btn-apply" color="indigo" radius="md" onClick={onApplyClick}>

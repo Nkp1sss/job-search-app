@@ -5,9 +5,9 @@ import { TextInput, Button } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeSearchValue } from '../../redux/slices/options';
-import { changeInputValue } from '../../redux/slices/inputs';
-import { changeCatalogKey, changePaymentFrom, changePaymentTo } from '../../redux/slices/options';
+import { changeSearchVacancy } from '../../redux/slices/options';
+import { changeVacancyInput } from '../../redux/slices/inputs';
+import { changeCatalogKey, changeSalaryFrom, changeSalaryTo } from '../../redux/slices/options';
 
 function SearchBar() {
   const inputValue = useAppSelector((store) => store.inputs.searchInputValue);
@@ -17,16 +17,16 @@ function SearchBar() {
   const dispatch = useAppDispatch();
 
   const onSearchBtnClick = () => {
-    dispatch(changeSearchValue(inputValue));
+    dispatch(changeSearchVacancy(inputValue));
 
     if (catalogValue) {
       dispatch(changeCatalogKey(catalogValue));
     }
     if (valueFrom) {
-      dispatch(changePaymentFrom(valueFrom));
+      dispatch(changeSalaryFrom(valueFrom));
     }
     if (valueTo) {
-      dispatch(changePaymentTo(valueTo));
+      dispatch(changeSalaryTo(valueTo));
     }
   };
 
@@ -40,10 +40,10 @@ function SearchBar() {
         icon={<IconSearch />}
         radius={'md'}
         value={inputValue}
-        onChange={(e) => dispatch(changeInputValue(e.target.value))}
+        onChange={(e) => dispatch(changeVacancyInput(e.target.value))}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
-            dispatch(changeSearchValue(inputValue));
+            dispatch(changeSearchVacancy(inputValue));
           }
         }}
       />

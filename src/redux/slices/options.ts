@@ -22,16 +22,16 @@ const slice = createSlice({
     changePage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
-    changeSearchValue(state, action: PayloadAction<string>) {
+    changeSearchVacancy(state, action: PayloadAction<string>) {
       state.searchVacancyName = action.payload;
     },
     changeCatalogKey(state, action: PayloadAction<string>) {
       state.catalogKey = action.payload;
     },
-    changePaymentFrom(state, action: PayloadAction<string>) {
+    changeSalaryFrom(state, action: PayloadAction<string>) {
       state.payment_from = action.payload;
     },
-    changePaymentTo(state, action: PayloadAction<string>) {
+    changeSalaryTo(state, action: PayloadAction<string>) {
       state.payment_to = action.payload;
     },
   },
@@ -39,9 +39,9 @@ const slice = createSlice({
 
 export const {
   changePage,
-  changeSearchValue,
+  changeSearchVacancy,
   changeCatalogKey,
-  changePaymentFrom,
-  changePaymentTo,
+  changeSalaryFrom,
+  changeSalaryTo,
 } = slice.actions;
 export default slice.reducer;
