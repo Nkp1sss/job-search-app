@@ -1,21 +1,30 @@
 import './Filters.scss';
 
-import { useState } from 'react';
 import { IconChevronDown } from '@tabler/icons-react';
 import { Image, Text, Select, Input, Button, Loader } from '@mantine/core';
 
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { useGetCataloguesQuery } from '../../redux/slices/SuperjobAPI';
-import { changeCatalogKey, changePaymentFrom, changePaymentTo } from '../../redux/slices/options';
+import {
+  changeCatalogKey,
+  changeSalaryFrom,
+  changeSalaryTo,
+  changeSearchVacancy,
+} from '../../redux/slices/options';
+import {
+  changeCatalogKeyInput,
+  changeSalaryToInput,
+  changeSalaryFromInput,
+} from '../../redux/slices/inputs';
 
 import { CatalogType, SelectType } from '../../types';
 import closeBtn from '../../assets/images/close-btn.png';
 
 function Filters() {
-  const [catalogValue, setCatalogValue] = useState<string | null>(null);
-  const [valueFrom, setValueFrom] = useState('');
-  const [valueTo, setValueTo] = useState('');
-
+  const catalogValue = useAppSelector((store) => store.inputs.catalogKey);
+  const valueFrom = useAppSelector((store) => store.inputs.payment_from);
+  const valueTo = useAppSelector((store) => store.inputs.payment_to);
+  const searchInputValue = useAppSelector((store) => store.inputs.searchInputValue);
   const dispatch = useAppDispatch();
 
   const { data: catalogues, isLoading } = useGetCataloguesQuery('');
@@ -28,21 +37,25 @@ function Filters() {
   }
 
   const onResetClick = () => {
-    setCatalogValue(null);
-    setValueFrom('');
-    setValueTo('');
+    dispatch(changeCatalogKeyInput(''));
+    dispatch(changeSalaryFromInput(''));
+    dispatch(changeSalaryToInput(''));
 
     dispatch(changeCatalogKey(''));
-    dispatch(changePaymentFrom(''));
-    dispatch(changePaymentTo(''));
+    dispatch(changeSalaryFrom(''));
+    dispatch(changeSalaryTo(''));
   };
 
   const onApplyClick = () => {
     if (catalogValue) {
       dispatch(changeCatalogKey(catalogValue));
     }
-    dispatch(changePaymentFrom(valueFrom));
-    dispatch(changePaymentTo(valueTo));
+    dispatch(changeSalaryFrom(valueFrom));
+    dispatch(changeSalaryTo(valueTo));
+
+    if (searchInputValue) {
+      dispatch(changeSearchVacancy(searchInputValue));
+    }
   };
 
   return (
@@ -66,7 +79,7 @@ function Filters() {
           <Select
             placeholder="Выберите отрасль"
             value={catalogValue}
-            onChange={setCatalogValue}
+            onChange={(value: string) => dispatch(changeCatalogKeyInput(value))}
             rightSection={
               isLoading ? (
                 <Loader color="indigo" size="sm" />
@@ -86,7 +99,7 @@ function Filters() {
             className="salary-from"
             value={valueFrom}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setValueFrom(e.target.value.replace(/\D/g, ''))
+              dispatch(changeSalaryFromInput(e.target.value.replace(/\D/g, '')))
             }
             pattern="\d"
           />
@@ -95,7 +108,7 @@ function Filters() {
             className="salary-to"
             value={valueTo}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setValueTo(e.target.value.replace(/\D/g, ''))
+              dispatch(changeSalaryToInput(e.target.value.replace(/\D/g, '')))
             }
           />
           <Button className="button btn-apply" color="indigo" radius="md" onClick={onApplyClick}>
